@@ -24,3 +24,14 @@ module "ec2_instance" {
     Owner = "InfraTeam"
   }
 }
+
+module "s3_bucket" {
+  source = "../modules/s3"
+
+  bucket_name = "my-bucket"
+  acl = "private"
+  tags = {
+    Name = "Flugel"
+    Owner = "InfraTeam"
+  }
+}
