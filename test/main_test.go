@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestHelloWorld(t *testing.T) {
+func TestMain(t *testing.T) {
 	t.Parallel()
 
 	testFolder := test_structure.CopyTerraformFolderToTemp(t, "../", "main")
