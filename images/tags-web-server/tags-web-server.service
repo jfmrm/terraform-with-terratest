@@ -1,0 +1,9 @@
+[Unit]
+After=network.service
+
+[Service]
+User=ubuntu
+ExecStart=/usr/local/bin/tags-web-server.sh
+
+[Install]
+WantedBy=default.target
