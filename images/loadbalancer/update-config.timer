@@ -1,0 +1,9 @@
+[Unit]
+Description=update nginx config
+
+[Timer]
+OnUnitActiveSec=5s
+OnBootSec=5s
+
+[Install]
+WantedBy=timers.target
