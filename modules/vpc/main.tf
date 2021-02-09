@@ -23,11 +23,11 @@ module "vpc" {
   name = "${var.name}-${random_id.vpc.hex}"
 
   # defining static cidr for simplicity
-  cidr = "10.0.0.0/16"
+  cidr = "10.0.1.0/24"
 
   # Single subnet architecture
-  azs             = ["${var.region}a", "${var.region}c"]
-  public_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
+  azs             = ["${var.region}a"]
+  public_subnets = ["10.0.1.0/24"]
   private_subnets  = []
 
   # As we only have public subnet a nat gateway is not needed
