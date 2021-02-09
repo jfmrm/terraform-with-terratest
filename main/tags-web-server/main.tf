@@ -31,7 +31,7 @@ module "alb" {
 
   name = "tags-web-server-lb"
   instance_profile_name = module.alb_instance_profile.name
-  ami = "ami-063074c065d169d34"
+  ami = "ami-017da7b30e625cc22"
   instance_type = "t2.micro"
   subnets_ids = module.vpc.public_subnets_ids
   vpc_id = module.vpc.id
@@ -54,7 +54,7 @@ module "tags_cluster" {
   instance_profile_name = module.tags_web_server_instance_profile.name
   cluster_name = "tags-cluster"
   instance_count = 2
-  ami = "ami-0b3aa768814f8f6b3"
+  ami = "ami-036a049c7ee5a2ee8"
   subnets_ids = module.vpc.public_subnets_ids
   vpc_id = module.vpc.id
   instance_type = "t2.micro"
