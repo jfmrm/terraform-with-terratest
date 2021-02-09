@@ -45,10 +45,10 @@ func TestTagsCluster(t *testing.T) {
 		assert.Equal(t, "InfraTeam", instanceTags["Owner"])
 	}
 
-	lb_dns := terraform.Output(t, terraformOptions, "lb_dns")
+	lb_public_ip := terraform.Output(t, terraformOptions, "lb_public_ip")
 
 	tlsConfig := tls.Config{}
 
-	http_helper.HttpGetWithRetry(t, "http://"+lb_dns, &tlsConfig, 200, "Name=Flugel\nOwner=InfraTeam", 10, 5*time.Second)
+	http_helper.HttpGetWithRetry(t, "http://"+lb_public_ip, &tlsConfig, 200, "App=tags-web-server\nName=Flugel\nOwner=InfraTeam", 10, 5*time.Second)
 
 }
