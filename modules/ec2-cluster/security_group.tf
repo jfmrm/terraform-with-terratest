@@ -17,7 +17,7 @@ resource "aws_security_group" "allow_alb" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    security_groups = [aws_security_group.alb_security_group.id]
+    security_groups = [var.lb_security_group]
   }
 
   egress {
