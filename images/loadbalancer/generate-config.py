@@ -21,9 +21,11 @@ instances = ec2.describe_instances(Filters=[
 
 ips = []
 
-for i in instances['Reservations'][0]['Instances']:
-    ips.append(i['PrivateIpAddress'])
-
+for r in instances['Reservations']:
+    for i in r['Instances']:
+        if i.get('PrivateIpAddress') is not None:
+            ips.append(i.get('PrivateIpAddress'))
+            
 servers = ""
 for ip in ips:
     servers += f"server {ip};\n"
