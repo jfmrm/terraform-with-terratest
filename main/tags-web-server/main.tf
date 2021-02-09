@@ -31,7 +31,7 @@ module "alb" {
 
   name = "tags-web-server-lb"
   instance_profile_name = module.alb_instance_profile.name
-  ami = "ami-020ec4be22d0fdd48"
+  ami = "ami-063074c065d169d34"
   instance_type = "t2.micro"
   subnets_ids = module.vpc.public_subnets_ids
   vpc_id = module.vpc.id
