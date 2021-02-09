@@ -19,6 +19,28 @@ module "vpc" {
   region = var.region
 }
 
+module "alb_instance_profile" {
+  source = "../../modules/ec2-instance-linked-profile"
+
+  name = "alb-instance-profile"
+  allow_actions = ["ec2:Describe*"]
+}
+
+module "alb" {
+  source = "../../modules/loadbalancer"
+
+  name = "tags-web-server-lb"
+  instance_profile_name = module.alb_instance_profile.name
+  ami = "ami-020ec4be22d0fdd48"
+  instance_type = "t2.micro"
+  subnets_ids = module.vpc.public_subnets_ids
+  vpc_id = module.vpc.id
+
+  tags = {
+    Name = "loadbalancer"
+  }
+}
+
 module "tags_web_server_instance_profile" {
   source = "../../modules/ec2-instance-linked-profile"
 
@@ -36,9 +58,11 @@ module "tags_cluster" {
   subnets_ids = module.vpc.public_subnets_ids
   vpc_id = module.vpc.id
   instance_type = "t2.micro"
+  lb_security_group = module.alb.security_group_id
   
   tags = {
     Name = "Flugel"
     Owner = "InfraTeam"
+    App = "tags-web-server"
   }
 }
