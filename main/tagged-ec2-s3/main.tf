@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 module "ec2_instance" {
-  source = "../modules/ec2"
+  source = "../../modules/ec2"
 
   image_name = "ami-ubuntu-18.04-1.16.0-00-1569343567"
   virtualization_type = "hvm"
@@ -26,7 +26,7 @@ module "ec2_instance" {
 }
 
 module "s3_bucket" {
-  source = "../modules/s3"
+  source = "../../modules/s3"
 
   bucket_name = "my-bucket"
   acl = "private"

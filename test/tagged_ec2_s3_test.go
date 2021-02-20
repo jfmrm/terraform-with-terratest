@@ -13,7 +13,7 @@ import (
 func TestEc2(t *testing.T) {
 	t.Parallel()
 
-	testFolder := test_structure.CopyTerraformFolderToTemp(t, "../", "main")
+	testFolder := test_structure.CopyTerraformFolderToTemp(t, "../", "main/tagged-ec2-s3")
 
 	awsRegion := aws.GetRandomRegion(t, nil, nil)
 
@@ -40,7 +40,7 @@ func TestEc2(t *testing.T) {
 func TestS3(t *testing.T) {
 	t.Parallel()
 
-	testFolder := test_structure.CopyTerraformFolderToTemp(t, "../", "main")
+	testFolder := test_structure.CopyTerraformFolderToTemp(t, "../", "main/tagged-ec2-s3")
 
 	awsRegion := aws.GetRandomRegion(t, nil, nil)
 

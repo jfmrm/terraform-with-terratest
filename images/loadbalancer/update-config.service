@@ -1,0 +1,9 @@
+[Unit]
+After=network.service
+
+[Service]
+User=ubuntu
+ExecStart=/usr/local/bin/update-config.sh
+
+[Install]
+WantedBy=default.target
